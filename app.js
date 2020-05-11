@@ -8,53 +8,33 @@ const notificationElement = document.querySelector(".notification");
 const button= document.querySelector(".butt");
 let input=document.querySelector(".textinput");
 
-// App data
-const weather = {};
-
-weather.temperature = {
-    unit : "celsius"
-};
-
-// APP CONSTS AND VARS
 const KELVIN = 273;
 
 // API KEY
 const key = "7c75f3c7c89189edb8cdfebfdc4e36c4";
 
-//CALL EVENT LISTENER FOR BUTTON CLICK
+async function getData() {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`)
+    const data = await response.json();
+    return data;
+}
+
 button.addEventListener('click', function(e){
-  
-    let api =`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`;
-    
-    fetch(api)
-        .then(function(response){
-          return response.json();
-        })
+    getData()
+    .then(data => {
+        data.temperature = {
+             unit : "celsius",
+             value : Math.floor(data.main.temp - KELVIN)
+        };
+        iconElement.innerHTML = `<img src="icons/${data.weather[0].icon}.png"/>`;
+        tempElement.innerHTML = `${data.temperature.value}°<span>C</span>`;
+        descElement.innerHTML = data.weather[0].description;
+        locationElement.innerHTML = `${data.name}, ${data.sys.country}`;
         
-        .then(function(data){
-            weather[temperature][value] = Math.floor(data.main.temp - KELVIN);
-            weather[description] = data.weather[0].description;
-            weather[iconId] = data.weather[0].icon;
-            weather[city] = data.name;
-            weather[country] = data.sys.country;
-            weather[search] = [data.input].name;
-            weather[position] = [data.coord.lat, data.coord.lon];
-        })
-      
-        .catch(err=>errormessage() );
-     
-        displayWeather();
-
-});
-
-// DISPLAY WEATHER VALUES TO UI/ USER
-function displayWeather(){
-    iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-    descElement.innerHTML = weather.description;
-    locationElement.innerHTML = `${weather.city}, ${weather.country}`;
-
-};
+        tempElement.addEventListener("click", convert());
+    })
+    .catch(err => errormessage());
+}
 
 function errormessage(){
     if(weather.city == undefined){
@@ -71,16 +51,16 @@ function celsiusToFahrenheit(temperature){
 
 // CHANGING TEMPERATURE UNIT WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
 tempElement.addEventListener("click", function(){
-    if(weather.temperature.value === undefined) return;
+    if(data.temperature.value === undefined) return;
     
-    if(weather.temperature.unit == "celsius"){
-        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+    if(data.temperature.unit == "celsius"){
+        let fahrenheit = celsiusToFahrenheit(data.temperature.value);
         fahrenheit = Math.floor(fahrenheit);
         
         tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
-        weather.temperature.unit = "fahrenheit";
+        data.temperature.unit = "fahrenheit";
     }else{
-        tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-        weather.temperature.unit = "celsius"
+        tempElement.innerHTML = `${data.temperature.value}°<span>C</span>`;
+        data.temperature.unit = "celsius"
     };
 });
