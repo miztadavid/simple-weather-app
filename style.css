@@ -1,0 +1,143 @@
+*{
+    font-family: "Rimouski";
+}
+
+body{
+  
+}
+
+.container{
+    width: 30em;    
+    background-color: rgba(216, 216, 216, 0.89);
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5em;
+    border-radius: 10px;
+    padding-bottom : 50px;
+    box-shadow: 4px 3px 8px 3px rgb(0, 5, 5);
+    position: sticky;
+}
+
+.app-title{
+    width: 30em;
+    height: 50px;
+    border-radius: 10px 10px 0 0;
+}
+input[type=text]{
+    border: 1px solid #a6c796;
+    width: 80%;
+    padding: .7em;
+    border-radius: 4em;
+    margin: 3em ;
+    margin-bottom: 2em;
+    box-sizing: border-box;
+}
+input[type=button]{
+    color: white;
+    font-weight:bold;
+    font-size: .9em;
+    background-color: black;
+    width: 60%;
+    padding: .8em 0;
+    border-radius: 1em;
+    text-align: center;
+    margin-left: 6em;
+    cursor: pointer;
+    margin-bottom: 3em;
+}
+.app-title p{
+    text-align: center;
+    padding: 2em;
+    font-size: 1.5em;
+    color: #293251;
+    text-align: center;
+}
+
+.notification{
+    
+    display: none;
+}
+
+.notification p{
+    font-size: 1.2em;
+    margin-top: 2em;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.weather-container{
+   margin-top: 3em;
+    height: 100%;
+    width: 30em; 
+    border-radius: 2em;
+    background-color: rgb(255, 255, 255);
+}
+
+.weather-icon{
+    width: 300px;
+    height: 128px;
+}
+
+.weather-icon img{
+    display: block;
+    margin: 0 auto;
+}
+
+.temperature-value{
+    width: 300px;
+    height:60px;
+}
+
+.temperature-value p{
+    padding: 0;
+    margin: 0;
+    color: #293251;
+    font-size: 4em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.temperature-value p:hover{
+    
+}
+
+.temperature-value span{
+    color: #293251;
+    font-size: 0.5em;
+}
+
+.temperature-description{
+    
+}
+
+.temperature-description p{
+    padding: 8px;
+    margin: 0;
+    color: #293251;
+    text-align: center;
+    font-size: 1.9em;
+}
+
+.location{
+    
+}
+
+.location p{
+    margin: 0;
+    padding: 0;
+    color: #293251;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 1em;
+    font-size: 1.2em;
+}
+.position{
+    text-align: center;
+    padding: 2em;
+    color: whitesmoke !important;
+    
+}
+
+
+
