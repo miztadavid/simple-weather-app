@@ -13,12 +13,15 @@ const weather = {};
 
 weather.temperature = {
     unit : "celsius"
-}
+};
 
 // APP CONSTS AND VARS
 const KELVIN = 273;
+
 // API KEY
 const key = "7c75f3c7c89189edb8cdfebfdc4e36c4";
+
+//CALL EVENT LISTENER FOR BUTTON CLICK
 button.addEventListener('click', function(e){
   
     let api =`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`;
@@ -29,21 +32,15 @@ button.addEventListener('click', function(e){
         })
         
         .then(function(data){
-            weather.temperature.value = Math.floor(data.main.temp - KELVIN);
-            weather.description = data.weather[0].description;
-            weather.iconId = data.weather[0].icon;
-            weather.city = data.name;
-            weather.country = data.sys.country;
-            weather.search=[data.input].name;
-            weather.position=[data.coord.lat, data.coord.lon]
-
+            weather[temperature][value] = Math.floor(data.main.temp - KELVIN);
+            weather[description] = data.weather[0].description;
+            weather[iconId] = data.weather[0].icon;
+            weather[city] = data.name;
+            weather[country] = data.sys.country;
+            weather[search] = [data.input].name;
+            weather[position] = [data.coord.lat, data.coord.lon];
         })
       
-        // displaying data
-//         .then(function(data){
-//             displayWeather();
-//         })
-        // displaying error
         .catch(err=>errormessage() );
      
         displayWeather();
@@ -64,7 +61,7 @@ function errormessage(){
         notificationElement.style.display = "block";
         notificationElement.innerHTML = "<p>Invalid City Name</p>";
         input.value='';
-    }
+    };
 };
 
 // Celcius to Farenhiet conversion
