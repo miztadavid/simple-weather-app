@@ -34,7 +34,7 @@ button.addEventListener('click', function(e){
         tempElement.addEventListener("click", convert());
     })
     .catch(err => errormessage());
-}
+})
 
 function errormessage(){
     if(weather.city == undefined){
