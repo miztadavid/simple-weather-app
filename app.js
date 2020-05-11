@@ -37,7 +37,7 @@ button.addEventListener('click', function(e){
 })
 
 function errormessage(){
-    if(weather.city == undefined){
+    if(data.city == undefined){
         notificationElement.style.display = "block";
         notificationElement.innerHTML = "<p>Invalid City Name</p>";
         input.value='';
