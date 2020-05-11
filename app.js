@@ -1,12 +1,13 @@
 
 // SELECT ELEMENTS
-const iconElement = document.querySelector(".weather-icons");
+const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location p");
 const notificationElement = document.querySelector(".notification");
-const button= document.querySelector(".butt")
-let input=document.querySelector(".textinput")
+const button= document.querySelector(".butt");
+let input=document.querySelector(".textinput");
+
 // App data
 const weather = {};
 
@@ -39,13 +40,16 @@ button.addEventListener('click', function(e){
         })
       
         // displaying data
-        .then(function(data){
-            displayWeather();
-        })
+//         .then(function(data){
+//             displayWeather();
+//         })
         // displaying error
-        .catch(err=>errormessage() )
+        .catch(err=>errormessage() );
+     
+        displayWeather();
 
 });
+
 // DISPLAY WEATHER VALUES TO UI/ USER
 function displayWeather(){
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
@@ -53,19 +57,21 @@ function displayWeather(){
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 
-}
+};
+
 function errormessage(){
-    if(weather.city==undefined){
+    if(weather.city == undefined){
         notificationElement.style.display = "block";
         notificationElement.innerHTML = "<p>Invalid City Name</p>";
         input.value='';
-        
     }
-}
+};
+
 // Celcius to Farenhiet conversion
 function celsiusToFahrenheit(temperature){
     return (temperature * 9/5) + 32;
-}
+};
+
 // CHANGING TEMPERATURE UNIT WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
 tempElement.addEventListener("click", function(){
     if(weather.temperature.value === undefined) return;
@@ -79,5 +85,5 @@ tempElement.addEventListener("click", function(){
     }else{
         tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
         weather.temperature.unit = "celsius"
-    }
+    };
 });
