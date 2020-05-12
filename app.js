@@ -38,8 +38,8 @@ button.addEventListener('click', function(e){
 
 function errormessage(){
     if(data.data== undefined){
-      alert("invalid city")
-        input.value=" ;
+      alert("invalid city");
+        input.value="" ;
     };
 };
 
