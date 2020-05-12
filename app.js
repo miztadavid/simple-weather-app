@@ -37,7 +37,7 @@ button.addEventListener('click', function(e){
 })
 
 function errormessage(){
-    if(data.city == undefined){
+    if(data.name== undefined){
       alert("invalid city")
         input.value=" ;
     };
