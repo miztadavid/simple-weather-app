@@ -30,7 +30,7 @@ button.addEventListener('click', function(e){
         tempElement.innerHTML = `${data.temperature.value}°<span>C</span>`;
         descElement.innerHTML = data.weather[0].description;
         locationElement.innerHTML = `${data.name}, ${data.sys.country}`;
-   
+   Input.value = "";
         tempElement.addEventListener("click", convert());
     })
    
@@ -41,7 +41,7 @@ function errormessage(){
     if(data.city == undefined){
         notificationElement.style.display = "block";
         notificationElement.innerHTML = "<p>Invalid City Name</p>";
-        input=input.reset();
+        Input.value = "";
     };
 };
 
