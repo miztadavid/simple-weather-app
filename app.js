@@ -30,9 +30,10 @@ button.addEventListener('click', function(e){
         tempElement.innerHTML = `${data.temperature.value}°<span>C</span>`;
         descElement.innerHTML = data.weather[0].description;
         locationElement.innerHTML = `${data.name}, ${data.sys.country}`;
-        
+        Input.value=" ";
         tempElement.addEventListener("click", convert());
     })
+   
     .catch(err => errormessage());
 })
 
